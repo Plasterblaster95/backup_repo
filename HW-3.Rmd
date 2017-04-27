@@ -1,0 +1,57 @@
+---
+title: "HW-3"
+author: "CMSC 205, Spring '17"
+date: "April 23, 2017"
+output: html_document
+---
+1.So far I've spent 4 hours on this assignmenmt.
+2.Link:(https://github.com/Plasterblaster95/HW-3.git).
+3.The thing that gave me the most trouble was figuring out which functions to use for which questions and getting the data to display.
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(Lahman)
+```
+
+
+# Problem 1
+```{r}
+Teams %>%
+mutate(Teams, TB = H + X2B + x3, #Does H include all hits or just singles
+       BA = H / AB,
+       SLG = total_bases / AB)
+```
+
+# Problem 2
+```{r}
+mutate(Teams, SLG = H/AB)%>%
+ggplot(Teams, aes(x = SLG, y = lgID)) + 
+  geom_point(color = "darkorange1") + 
+  geom_smooth(color = "scale") +
+  labs(x = "Slugging Percentage", y = "American & National Leagues",
+       title = "MLB SLP Since 1954",
+       subtitle = "Comparing the American and National leagues") + 
+  theme_minimal()
+  
+#Use mapping and then figure out dw_functions
+```
+
+# Problem 3
+```{r}
+#Use
+Teams %>%
+filter(yearID >= 1969)
+group_by(Teams, n = 15, desc(by = "SLG"))
+```
+
+# Problem 4
+```{r}
+#Think about how I restrict my attention to specific rows
+Teams %>%
+filter(franchID == LAA, active == Y) %>%
+separate(LAA, into = c("CAL","ANA")) %>%
+arrange(desc(seasons = 10))
+ #Use logical operators, define column name & values in filter statement
+glimpse(Teams)
+```
+
