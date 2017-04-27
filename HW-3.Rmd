@@ -1,6 +1,6 @@
 ---
-title: "HW-3"
-author: "CMSC 205, Spring '17"
+title: "CMSC 205 HW-3"
+author: "JACK PLASTERER"
 date: "April 23, 2017"
 output: html_document
 ---
